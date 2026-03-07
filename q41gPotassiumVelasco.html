@@ -10,32 +10,34 @@
     <script src="q41gPotassiumVelasco.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Add a Movie</h1>
-      <form method="post">
-          <label><b>Title</b><br/><input type="textbox" id="title"></label><br/><br/>
-          <label><b>Year</b><br/><input type="textbox" id="year"></label><br/><br/>
-          <label><b>Genre</b><br/>
-              <select id="genre">
-                  <option>Action</option>
-                  <option>Adventure</option>
-                  <option>Comedy</option>
-                  <option>Drama</option>
-                  <option>Fantasy</option>
-                  <option>Horror</option>
-                  <option>Romance</option> 
-                  <option>Sci-fi</option>
-                  <option>Thriller</option>
-              </select>
-          </label><br/><br/>
-      </form>
-      <a><b>Rating:</b><br/></a>
-      <div class="starating">★ ★ ★ ★ ★<br/><br/></div>
+    <div class="box">
+        <h1>Add a Movie</h1>
+        <form id="formHEH" method="post">
+            <label>Title<br/><input type="textbox" id="title"></label><br/><br/>
+            <label>Year<br/><input type="textbox" id="year"></label><br/><br/>
+            <label>Genre<br/>
+                <select id="genre">
+                    <option>Action</option>
+                    <option>Adventure</option>
+                    <option>Comedy</option>
+                    <option>Drama</option>
+                    <option>Fantasy</option>
+                    <option>Horror</option>
+                    <option>Romance</option> x
+                    <option>Sci-fi</option>
+                    <option>Thriller</option>
+                </select>
+            </label><br/><br/>
+        </form>
+        Rating:
+        <div class="rating">
+            <span data-value="1"> ☆</span>
+            <span data-value="2"> ☆</span>
+            <span data-value="3"> ☆</span>
+            <span data-value="4"> ☆</span>
+            <span data-value="5"> ☆</span>
+        </div>
 
-      <button onclick="addingMovie">Add Movie</button>
-
-      <h1>Movie List</h1>
-      <p id="output"></p>
     </div>
 
   </body>
