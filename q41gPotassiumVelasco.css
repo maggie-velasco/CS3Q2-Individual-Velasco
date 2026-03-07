@@ -1,7 +1,11 @@
+* {
+    font-family:"Comic Neue", "Comic Sans MS", cursive;
+}
 body{
     background-image:url('https://images8.alphacoders.com/555/thumb-1920-555560.jpg');
     background-repeat:no-repeat;
     background-size:cover;
+    background-attachment:fixed;
 }
 
 .box{
@@ -11,21 +15,57 @@ body{
     margin-left:auto;
     margin-right:auto;
     width:60%;
-    margin-top: 4rem;
+    margin-top: 3rem;
+    margin-bottom:3rem;
     padding:2rem;
+}
+
+#list{
+    background-color:rgb(232, 231, 231);
+    border:solid rgb(130, 129, 129);
+    border-radius:0.5rem;
+    padding:1rem;
+}
+
+footer{
+    text-align:center;
+}
+
+.star{
+    color:gray; 
+    font-size:2rem;
+}
+
+.star.slected, .star:hover{
+    color:gold;
+}
+
+#rateOutput{
+    color:black;
+}
+
+button{
+    background-color:rgb(170, 170, 219);
+    color:white;
+    margin:0 auto;
+    display:block;
+    width:80%;
+    height:2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+input[type="textbox"]{  
+    width:80%;
 }
 
 h1{
     text-align:center;
 }
-.rating span{
-    font-size:2.5rem;
-}
-.rating span.selected{
-    color:gold;
-}
+
 @media(max-width:480px){
-    .rating{
+    .star{
         font-size:1.5rem;
     }
 }
