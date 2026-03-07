@@ -13,8 +13,8 @@
     <div class="box">
         <h1>Add a Movie</h1>
         <form id="formHEH" method="post">
-            <label>Title<br/><input type="textbox" id="title"></label><br/><br/>
-            <label>Year<br/><input type="textbox" id="year"></label><br/><br/>
+            <label>Title<br/><input type="textbox" id="title" placeholder="Title of Movie" required></label><br/><br/>
+            <label>Year<br/><input type="textbox" id="year" placeholder="Year of Movie" required></label><br/><br/>
             <label>Genre<br/>
                 <select id="genre">
                     <option>Action</option>
@@ -23,22 +23,31 @@
                     <option>Drama</option>
                     <option>Fantasy</option>
                     <option>Horror</option>
-                    <option>Romance</option> x
+                    <option>Romance</option>
                     <option>Sci-fi</option>
                     <option>Thriller</option>
                 </select>
             </label><br/><br/>
         </form>
         Rating:
-        <div class="rating">
-            <span data-value="1"> ☆</span>
-            <span data-value="2"> ☆</span>
-            <span data-value="3"> ☆</span>
-            <span data-value="4"> ☆</span>
-            <span data-value="5"> ☆</span>
-        </div>
+        <div name="rate" class="rating">
+            <span class = "star" data-value="1"> ★</span>
+            <span class = "star" data-value="2"> ★</span>
+            <span class = "star" data-value="3"> ★</span>
+            <span class = "star" data-value="4"> ★</span>
+            <span class = "star" data-value="5"> ★</span>
+        </div><br/>
+        <p id="rateOutput"></p><br/>
+        <button id="addbtn" onclick="add()">Add Movie</button>
+
+        <h1>Movie list</h1>
+        <p id="list"></p>
 
     </div>
+
+    <footer>
+        <h4>&copy K28 Velasco. All Rights Reserved.</h4>
+    </footer>
 
   </body>
   
