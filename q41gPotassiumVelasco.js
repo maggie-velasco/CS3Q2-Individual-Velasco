@@ -1,78 +1,90 @@
-* {
-    font-family:"Comic Neue", "Comic Sans MS", cursive;
-}
-body{
-    background-image:url('https://images8.alphacoders.com/555/thumb-1920-555560.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-attachment:fixed;
+let movies = JSON.parse(localStorage.getItem("movies")) || [];
+function add(){
+    let title=document.getElementById("title").value;
+    let year=document.getElementById("year").value;
+    let genre=document.getElementById("genre").value;
+
+    let movie = {
+        title:title,
+        year:year,
+        genre:genre,
+        rating:savedRating
+    };
+    movies.push(movie);
+    localStorage.setItem("movies", JSON.stringify(movies));
+
+    displayy();
 }
 
-.box{
-    background-color:white;
-    border-radius:2rem;
-    color:black;
-    margin-left:auto;
-    margin-right:auto;
-    width:60%;
-    margin-top: 3rem;
-    margin-bottom:3rem;
-    padding:2rem;
-}
-
-#list{
-    background-color:rgb(232, 231, 231);
-    border:solid rgb(130, 129, 129);
-    border-radius:0.5rem;
-    padding:1rem;
-}
-
-footer{
-    text-align:center;
-}
-
-.star{
-    color:gray; 
-    transition: color 0.2s;
-}
-
-.stars{
-    display: flex;
-    flex-direction: row;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.star.selected, .star:hover{
-    color:gold;
-}
-
-#rateOutput{
-    color:black;
-}
-
-button{
-    background-color:rgb(170, 170, 219);
-    color:white;
-    margin:0 auto;
-    display:block;
-    width:80%;
-    height:2rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-}
-
-input[type="textbox"]{  
-    width:80%;
-}
-
-h1{
-    text-align:center;
-}
-
-@media(max-width:480px){
-    .star{
-        font-size:1.5rem;
+function rateToStars(rating){
+    let stars = "";
+    if(rating === "1"){
+        stars = "☆";
     }
+    else if(rating === "2"){
+        stars = "☆☆";
+    }
+    else if(rating === "3"){
+        stars = "☆☆☆";
+    }
+    else if(rating === "4"){
+        stars = "☆☆☆☆";
+    }
+    else if(rating === "5"){
+        stars = "☆☆☆☆☆";
+    }
+    else {
+        stars = "";
+    }
+
+    return stars;
 }
+
+function displayy(){
+    let movies = JSON.parse(localStorage.getItem("movies")) || [];
+    let output="";
+
+    for(let i = 1; i < movies.length; i++){
+        let stars = rateToStars(movies[i].rating);
+        output += `${movies[i].title} (${movies[i].year}) - ${movies[i].genre}, Rating: ${stars}<br/>`;
+    }
+
+    document.getElementById("list").innerHTML = output;
+}
+
+//starss
+  const stars = document.querySelectorAll(".star");
+  const rateOutput = document.getElementById("rateOutput");
+  let savedRating = 0;
+  stars.forEach(function(star) {
+    star.addEventListener("mouseover", function() {
+      let starValue = star.getAttribute("data-value");
+      highlightHEH(starValue);
+    });
+
+    star.addEventListener("mouseout", function() {
+      highlightHEH(savedRating);
+    });
+
+    star.addEventListener("click", function() {
+      savedRating = star.getAttribute("data-value");
+      rateOutput.textContent = savedRating;
+      highlightHEH(savedRating);
+    });
+  });
+
+  function highlightHEH(rating) {
+    stars.forEach(function(star) {
+
+      let starValue = star.getAttribute("data-value");
+
+      if (starValue <= rating) {
+        star.classList.add("selected");
+      }
+      else {
+        star.classList.remove("selected");
+      }
+
+    });
+
+  }
