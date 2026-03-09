@@ -33,10 +33,17 @@ footer{
 
 .star{
     color:gray; 
-    font-size:2rem;
+    transition: color 0.2s;
 }
 
-.star.slected, .star:hover{
+.stars{
+    display: flex;
+    flex-direction: row;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.star.selected, .star:hover{
     color:gold;
 }
 
