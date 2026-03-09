@@ -7,7 +7,6 @@
     <title>Q4-Graded exercise 1</title>
     <meta name="author" content="K28">
     <link rel = "stylesheet" href = "q41gPotassiumVelasco.css">
-    <script src="q41gPotassiumVelasco.js"></script>
   </head>
   <body>
     <div class="box">
@@ -29,15 +28,15 @@
                 </select>
             </label><br/><br/>
         </form>
-        Rating:
-        <div name="rate" class="rating">
-            <span class = "star" data-value="1"> ★</span>
-            <span class = "star" data-value="2"> ★</span>
-            <span class = "star" data-value="3"> ★</span>
-            <span class = "star" data-value="4"> ★</span>
-            <span class = "star" data-value="5"> ★</span>
+        <p>Rating: <span id="rateOutput">0</span> stars</p>
+
+        <div name="rate" class="stars" id="starRating">
+            <span class = "star" data-value="1">&#9733;</span>
+            <span class = "star" data-value="2">&#9733;</span>
+            <span class = "star" data-value="3">&#9733;</span>
+            <span class = "star" data-value="4">&#9733;</span>
+            <span class = "star" data-value="5">&#9733;</span>
         </div><br/>
-        <p id="rateOutput"></p><br/>
         <button id="addbtn" onclick="add()">Add Movie</button>
 
         <h1>Movie list</h1>
@@ -48,7 +47,7 @@
     <footer>
         <h4>&copy K28 Velasco. All Rights Reserved.</h4>
     </footer>
-
+    <script src="q41gPotassiumVelasco.js"></script>
   </body>
   
 </html>
