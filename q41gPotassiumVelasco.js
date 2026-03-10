@@ -1,5 +1,8 @@
 let movies = JSON.parse(localStorage.getItem("movies")) || [];
 function add(){
+    if(savedRating === 0){
+      alert("Enter a rating first");
+    }
     let title=document.getElementById("title").value;
     let year=document.getElementById("year").value;
     let genre=document.getElementById("genre").value;
@@ -10,10 +13,19 @@ function add(){
         genre:genre,
         rating:savedRating
     };
+
+    if(title==="" || year==="" || genre===""){
+      alert("Fill in all of the needed information");
+    }
+
+    let finding = false;
+    
     movies.push(movie);
     localStorage.setItem("movies", JSON.stringify(movies));
 
     displayy();
+
+    document.getElementById("formHEH").reset();
 }
 
 function rateToStars(rating){
@@ -43,6 +55,8 @@ function rateToStars(rating){
 function displayy(){
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
     let output="";
+
+    let found = false;
 
     for(let i = 1; i < movies.length; i++){
         let stars = rateToStars(movies[i].rating);
@@ -88,3 +102,5 @@ function displayy(){
     });
 
   }
+
+
