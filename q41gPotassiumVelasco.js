@@ -1,8 +1,5 @@
 let movies = JSON.parse(localStorage.getItem("movies")) || [];
 function add(){
-    if(savedRating === 0){
-      alert("Enter a rating first");
-    }
     let title=document.getElementById("title").value;
     let year=document.getElementById("year").value;
     let genre=document.getElementById("genre").value;
@@ -15,7 +12,10 @@ function add(){
     };
 
     if(title==="" || year==="" || genre===""){
-      alert("Fill in all of the needed information");
+      alert("Pls fill in all of the needed information");
+    }
+    if(savedRating === 0){
+      alert("Pls enter a rating first");
     }
 
     let finding = false;
