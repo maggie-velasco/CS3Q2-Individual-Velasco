@@ -13,9 +13,9 @@
         <h1>Add a Movie</h1>
         <form id="formHEH" method="post">
             <label>Title<br/><input type="textbox" id="title" placeholder="Title of Movie" required></label><br/><br/>
-            <label>Year<br/><input type="textbox" id="year" placeholder="Year of Movie" required></label><br/><br/>
+            <label>Year<br/><input type="number" id="year" placeholder="Year of Movie" required></label><br/><br/>
             <label>Genre<br/>
-                <select id="genre">
+                <select id="genre" required>
                     <option>Action</option>
                     <option>Adventure</option>
                     <option>Comedy</option>
@@ -27,17 +27,18 @@
                     <option>Thriller</option>
                 </select>
             </label><br/><br/>
-        </form>
-        <p>Rating: <span id="rateOutput">0</span> stars</p>
 
-        <div name="rate" class="stars" id="starRating">
-            <span class = "star" data-value="1">&#9733;</span>
-            <span class = "star" data-value="2">&#9733;</span>
-            <span class = "star" data-value="3">&#9733;</span>
-            <span class = "star" data-value="4">&#9733;</span>
-            <span class = "star" data-value="5">&#9733;</span>
-        </div><br/>
-        <button id="addbtn" onclick="add()">Add Movie</button>
+            <p>Rating: <span id="rateOutput">0</span> stars</p>
+
+            <div name="rate" class="stars" id="starRating">
+                <span class = "star" data-value="1">&#9733;</span>
+                <span class = "star" data-value="2">&#9733;</span>
+                <span class = "star" data-value="3">&#9733;</span>
+                <span class = "star" data-value="4">&#9733;</span>
+                <span class = "star" data-value="5">&#9733;</span>
+            </div><br/>
+            <button type="submit" id="addbtn" onclick="add()">Add Movie</button>
+        </form>
 
         <h1>Movie list</h1>
         <p id="list"></p>
