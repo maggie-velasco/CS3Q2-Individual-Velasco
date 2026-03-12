@@ -14,6 +14,7 @@ function add(){
     if(title==="" || year==="" || genre===""){
       alert("Pls fill in all of the needed information");
     }
+
     if(savedRating === 0){
       alert("Pls enter a rating first");
     }
@@ -60,10 +61,21 @@ function displayy(){
 
     for(let i = 1; i < movies.length; i++){
         let stars = rateToStars(movies[i].rating);
-        output += `${movies[i].title} (${movies[i].year}) - ${movies[i].genre}, Rating: ${stars}<br/>`;
+        output += `${movies[i].title} (${movies[i].year}) - ${movies[i].genre}, Rating: ${stars} <button id="deletebtn" onclick="deleting(${i})">Delete</button><br/><br/>`;
     }
 
     document.getElementById("list").innerHTML = output;
+}
+
+function deleting(i){
+  const deleteBtn = document.getElementById("deletbtn");
+  const ask = confirm("Are you sure you want to delete this movie?");
+  if(ask){
+    movies.splice(i,1);
+    localStorage.setItem("movies", JSON.stringify(movies));
+    displayy();
+    alert("Movie deleted!!");
+  }
 }
 
 //starss
