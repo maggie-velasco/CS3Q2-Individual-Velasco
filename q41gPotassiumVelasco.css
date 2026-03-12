@@ -51,7 +51,7 @@ footer{
     color:black;
 }
 
-button{
+#addbtn {
     background-color:rgb(170, 170, 219);
     color:white;
     margin:0 auto;
@@ -61,6 +61,12 @@ button{
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+}
+
+#deletebtn {
+    color:black;
+    border-radius:0.5rem;
+    cursor:pointer;
 }
 
 input[type="textbox"]{  
