@@ -4,52 +4,66 @@ function add(){
     let year=document.getElementById("year").value;
     let genre=document.getElementById("genre").value;
 
-    let movie = {
-        title:title,
-        year:year,
-        genre:genre,
-        rating:savedRating
-    };
-
-    if(title==="" || year==="" || genre===""){
+    if(!title || !year || !genre){
       alert("Pls fill in all of the needed information");
     }
 
-    if(savedRating === 0){
+    if(title && year && genre && savedRating === 0){
       alert("Pls enter a rating first");
+      return;
     }
 
-    let finding = false;
-    
-    movies.push(movie);
+    let found = findingUpdate(title);
+    if(found !== -1){
+      movies[found].year = year;
+      movies[found].genre = genre;
+
+      let genz = Number(movies[found].rating);
+      let boomer = Number(savedRating);
+      movies[found].rating = Math.round((genz + boomer)/2);
+    }
+    else {
+      let movie = {
+        title:title,
+        year:year,
+        genre:genre,
+        rating:Number(savedRating)
+      };
+      movies.push(movie);
+    }
     localStorage.setItem("movies", JSON.stringify(movies));
-
     displayy();
-
     document.getElementById("formHEH").reset();
+    savedRating = 0;
+    document.getElementById("rateOutput").testContent = savedRating;
+}
+
+function findingUpdate(title){
+  for(let i = 0; i < movies.length; i++){
+    if(movies[i].title === title){
+      return i;
+    }
+  }
+  return -1;
 }
 
 function rateToStars(rating){
     let stars = "";
-    if(rating === "1"){
+    if(rating === 1){
         stars = "☆";
     }
-    else if(rating === "2"){
+    else if(rating === 2){
         stars = "☆☆";
     }
-    else if(rating === "3"){
+    else if(rating === 3){
         stars = "☆☆☆";
     }
-    else if(rating === "4"){
+    else if(rating === 4){
         stars = "☆☆☆☆";
     }
-    else if(rating === "5"){
+    else if(rating === 5){
         stars = "☆☆☆☆☆";
     }
-    else {
-        stars = "";
-    }
-
     return stars;
 }
 
@@ -57,9 +71,7 @@ function displayy(){
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
     let output="";
 
-    let found = false;
-
-    for(let i = 1; i < movies.length; i++){
+    for(let i = 0; i < movies.length; i++){
         let stars = rateToStars(movies[i].rating);
         output += `${movies[i].title} (${movies[i].year}) - ${movies[i].genre}, Rating: ${stars} <button id="deletebtn" onclick="deleting(${i})">Delete</button><br/><br/>`;
     }
@@ -79,40 +91,36 @@ function deleting(i){
 }
 
 //starss
-  const stars = document.querySelectorAll(".star");
-  const rateOutput = document.getElementById("rateOutput");
-  let savedRating = 0;
-  stars.forEach(function(star) {
-    star.addEventListener("mouseover", function() {
-      let starValue = star.getAttribute("data-value");
-      highlightHEH(starValue);
-    });
-
-    star.addEventListener("mouseout", function() {
-      highlightHEH(savedRating);
-    });
-
-    star.addEventListener("click", function() {
-      savedRating = star.getAttribute("data-value");
-      rateOutput.textContent = savedRating;
-      highlightHEH(savedRating);
-    });
+const stars = document.querySelectorAll(".star");
+const rateOutput = document.getElementById("rateOutput");
+let savedRating = 0;
+stars.forEach(function(star) {
+  star.addEventListener("mouseover", function() {
+    let starValue = star.getAttribute("data-value");
+    highlightHEH(starValue);
   });
 
-  function highlightHEH(rating) {
-    stars.forEach(function(star) {
+  star.addEventListener("mouseout", function() {
+    highlightHEH(savedRating);
+  });
 
-      let starValue = star.getAttribute("data-value");
+  star.addEventListener("click", function() {
+    savedRating = star.getAttribute("data-value");
+    rateOutput.textContent = savedRating;
+    highlightHEH(savedRating);
+  });
+});
 
-      if (starValue <= rating) {
-        star.classList.add("selected");
-      }
-      else {
-        star.classList.remove("selected");
-      }
+function highlightHEH(rating) {
+  stars.forEach(function(star) {
+  let starValue = star.getAttribute("data-value");
 
-    });
-
+  if (starValue <= rating) {
+    star.classList.add("selected");
+  }
+  else {
+    star.classList.remove("selected");
   }
 
-
+});
+}
